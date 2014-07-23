@@ -19,9 +19,23 @@
         <script>
         
         
-  $.getJSON("http://localhost:8093/maven-spring-hibernate/servicios/usuario",function(result){
+  $.getJSON("http://localhost:8095/maven-spring-hibernate/servicios/usuario",function(result){
     $.each(result, function(i, campo){
-      $("div").append("<li>"+campo.nombre + "</li> ");
+      $("div").append("<li>"+campo.nombre + " sueldo: "+ campo.sueldo+ "</li> ");
+    });
+    
+    /* AQUI AGREGAMOS EL URL
+     * 
+     */
+    $.ajax({
+        url:'http://localhost:8095/maven-spring-hibernate/servicios/usuario/chupa%20me%20la/9000',
+        method:'GET',
+        success:function(mensaje){
+            alert(mensaje);
+        },
+        failure:function(){
+            alert("ALGO MALO SUCEDIO LO SIENTO, LOSE!!");
+        }
     });
 
 });
